@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.controllers.InstruccionesController">
+<AnchorPane fx:id="acp_instrucciones" prefHeight="515.0" prefWidth="672.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.controllers.InstruccionesController">
    <children>
-      <Label fx:id="lbl_titulo" alignment="CENTER" contentDisplay="CENTER" text="Instrucciones" textAlignment="CENTER" />
+      <ImageView fitHeight="521.0" fitWidth="674.0" layoutX="-2.0" layoutY="-1.0" pickOnBounds="true">
+         <image>
+            <Image url="@../Imagenes/Fondoinstr.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="lbl_instrucciones" layoutX="238.0" layoutY="50.0" text="Instrucciones:" textFill="#011140">
+         <font>
+            <Font name="Sitka Text" size="29.0" />
+         </font>
+      </Label>
    </children>
-</VBox>
+</AnchorPane>
