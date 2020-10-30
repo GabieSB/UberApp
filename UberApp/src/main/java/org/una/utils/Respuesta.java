@@ -3,15 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.una.unaeropuertoclient.utils;
+package org.una.utils;
 
 import java.io.Serializable;
 import java.util.HashMap;
 
-/**
- *
- * @author ccarranza
- */
 public class Respuesta implements Serializable {
 
     private static final long serialVersionUID = 1L;

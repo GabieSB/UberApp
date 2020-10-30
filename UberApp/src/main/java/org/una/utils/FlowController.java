@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
@@ -23,12 +24,8 @@ import java.util.Stack;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-//import org.una.unaeropuertoclient.controller.MenuSuperiorController;
 
-/**
- *
- * @author esanchez
- */
+
 public class FlowController {
 
     @SuppressWarnings("FieldMayBeFinal")
@@ -192,7 +189,7 @@ public class FlowController {
         controller.initialize();
         Stage stage = new Stage();
         //stage.getIcons().add(new Image("clinicauna/resources/logo01.png"));
-        stage.setTitle("UNAeropuerto");
+        stage.setTitle("UberPZ");
         stage.setOnHidden((WindowEvent event) -> {
             controller.getStage().getScene().setRoot(new Pane());
             controller.setStage(null);
@@ -212,8 +209,8 @@ public class FlowController {
         controller.initialize();
         Stage stage = new Stage();
         //stage.setMaximized(true);
-        //stage.getIcons().add(new Image("clinicauna/resources/logo01.png"));
-        stage.setTitle("UNAeropuerto");
+        //stage.getIcons().add(new Image("UberApp/resources/org/una/Imagenes/UberPZ.png"));
+        stage.setTitle("UberPZ");
         stage.setResizable(resizable);
         stage.setOnHidden((WindowEvent event) -> {
             controller.getStage().getScene().setRoot(new Pane());
