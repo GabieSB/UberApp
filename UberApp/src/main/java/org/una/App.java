@@ -14,20 +14,13 @@ import java.io.IOException;
  * JavaFX App
  */
 public class App extends Application {
-
-
-
-    private static Scene scene;
-
     @Override
     public void start(Stage stage) throws IOException {
         FlowController.getInstance().InitializeFlow(stage, null);
-        FlowController.getInstance().goViewInWindow("Inicio", Boolean.FALSE);
+        FlowController.getInstance().goViewInWindow("Inicio");
     }
 
     public static void main(String[] args) {
-
-        AppContext.getInstance();
         launch();
     }
 
