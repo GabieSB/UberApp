@@ -16,8 +16,10 @@ import java.io.IOException;
 public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        AppContext.getInstance();
         FlowController.getInstance().InitializeFlow(stage, null);
-        FlowController.getInstance().goViewInWindow("Inicio");
+        FlowController.getInstance().goMain();
+        FlowController.getInstance().goView("Inicio");
     }
 
     public static void main(String[] args) {

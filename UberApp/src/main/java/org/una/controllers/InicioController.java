@@ -38,6 +38,8 @@ public class InicioController extends Controller implements Initializable {
 
     public void btn_acercade(ActionEvent actionEvent) {
 
+        FlowController.getInstance().goView("AcercaDe");
+
     }
 
     public void btn_salir(ActionEvent actionEvent) {
