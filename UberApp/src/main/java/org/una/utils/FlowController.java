@@ -19,10 +19,7 @@ import java.util.Stack;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 
-/**
- *
- * @author esanchez
- */
+
 public class FlowController {
 
     @SuppressWarnings("FieldMayBeFinal")
