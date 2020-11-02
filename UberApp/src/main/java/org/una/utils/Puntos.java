@@ -7,7 +7,6 @@ package org.una.utils;
 
 import com.jfoenix.controls.JFXButton;
 
-
 public class Puntos {
     //Atributos
     private JFXButton nombre;

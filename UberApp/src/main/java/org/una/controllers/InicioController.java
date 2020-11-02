@@ -43,6 +43,6 @@ public class InicioController extends Controller implements Initializable {
     }
 
     public void btn_salir(ActionEvent actionEvent) {
-
+        getStage().close();
     }
 }

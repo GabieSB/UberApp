@@ -8,9 +8,6 @@ package org.una.controllers;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXToggleButton;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
-import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
-import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -253,10 +250,10 @@ public class MapaController extends Controller implements Initializable {
 
     @FXML
     private ToggleGroup trafico;
-    @FXML
+   /* @FXML
     private FontAwesomeIconView inicioViaje;
     @FXML
-    private MaterialDesignIconView finalViaje;
+    private MaterialDesignIconView finalViaje;*/
     @FXML
     private JFXRadioButton traficoNormal;
     @FXML
@@ -289,7 +286,7 @@ public class MapaController extends Controller implements Initializable {
     private ArrayList<Puntos> puntos;
     private ArrayList<Line> lines;
     private ArrayList<Line> linesVer;
-    private FontAwesomeIconView icon;
+   // private FontAwesomeIconView icon;
     private Dijkstra dijks;
     private Floyd floy;
     private JFXButton start;
@@ -297,9 +294,9 @@ public class MapaController extends Controller implements Initializable {
     private Boolean inicio;
     private Boolean fin;
     private Boolean quita;
-    private FontAwesomeIconView ptInicio;
+    /*private FontAwesomeIconView ptInicio;
     private MaterialDesignIconView ptFinal;
-    private ArrayList<FontAwesomeIconView> bloqueos;
+    private ArrayList<FontAwesomeIconView> bloqueos;*/
     private ImageView carrito;
     private Timer time;
     private Integer tiempo;
@@ -326,14 +323,14 @@ public class MapaController extends Controller implements Initializable {
         creaPuntos();
         this.dijks = new Dijkstra(this.puntos);
         this.floy = new Floyd(this.puntos);
-        click();
+        //click();
         ocultaBotones(true);
         this.start = null;
         this.end = null;
         this.inicio = false;
         this.fin = false;
         this.quita = false;
-        this.ptInicio = new FontAwesomeIconView();
+       /* this.ptInicio = new FontAwesomeIconView();
         this.ptInicio.setGlyphName("STREET_VIEW");
         this.ptInicio.setGlyphSize(15);
         this.ptInicio.setFill(Color.DARKMAGENTA);
@@ -341,7 +338,7 @@ public class MapaController extends Controller implements Initializable {
         this.ptFinal.setGlyphName("MAP_MARKER_RADIUS");
         this.ptFinal.setGlyphSize(15);
         this.ptFinal.setFill(Color.DARKMAGENTA);
-        this.bloqueos = new ArrayList();
+        this.bloqueos = new ArrayList();*/
         this.carrito = new ImageView();
         AppContext.getInstance().set("root", root);
     }
@@ -502,7 +499,7 @@ public class MapaController extends Controller implements Initializable {
             }
         }
 
-        if (this.tgAccidente.isSelected()) {
+        /*if (this.tgAccidente.isSelected()) {
             icon = new FontAwesomeIconView(FontAwesomeIcon.AMBULANCE);
             icon.setFill(Color.CRIMSON);
         } else if (this.tgCosevi.isSelected()) {
@@ -513,17 +510,17 @@ public class MapaController extends Controller implements Initializable {
         icon.setLayoutX(a.getLayoutX());
         icon.setLayoutY(a.getLayoutY() + 5);
         icon.setSize("15");
-        icon.setOnMouseClicked((e) -> {
+        con.setOnMouseClicked((e) -> {
             if (quita) {
                 quita((FontAwesomeIconView) e.getSource());
             }
-        });
-        this.bloqueos.add(icon);
-        this.root.getChildren().add(icon);
+        });*/
+        //this.bloqueos.add(icon);
+        //this.root.getChildren().add(icon);
 
     }
 
-    public void click() {
+    /*public void click() {
         this.inicioViaje.setOnMouseClicked((e) -> {
             this.inicio = true;
             this.fin = false;
@@ -568,7 +565,7 @@ public class MapaController extends Controller implements Initializable {
                 ocultaBotones(true);
             });
         }
-    }
+    }*/
 
     public void destinos() {
         for (int i = 0; i < puntos.size(); i++) {
@@ -641,10 +638,10 @@ public class MapaController extends Controller implements Initializable {
             if (tiempo == 0) {
                 tiempo = 1;
             }
-            this.root.getChildren().remove(this.ptInicio);
+            /*this.root.getChildren().remove(this.ptInicio);
             this.root.getChildren().add(this.ptInicio);
             this.root.getChildren().remove(this.ptFinal);
-            this.root.getChildren().add(this.ptFinal);
+            this.root.getChildren().add(this.ptFinal);*/
         } else {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
@@ -674,10 +671,10 @@ public class MapaController extends Controller implements Initializable {
             }
             this.root.getChildren().addAll(linesVer);
             destinos();
-            this.root.getChildren().remove(this.ptInicio);
+           /* this.root.getChildren().remove(this.ptInicio);
             this.root.getChildren().add(this.ptInicio);
             this.root.getChildren().remove(this.ptFinal);
-            this.root.getChildren().add(this.ptFinal);
+            this.root.getChildren().add(this.ptFinal);*/
         } else {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
@@ -687,7 +684,7 @@ public class MapaController extends Controller implements Initializable {
         }
     }
 
-    public void iniFin(JFXButton a) {
+   /* public void iniFin(JFXButton a) {
         if (this.inicio) {
             this.root.getChildren().remove(this.ptInicio);
             this.ptInicio.setX(a.getLayoutX());
@@ -702,15 +699,15 @@ public class MapaController extends Controller implements Initializable {
             this.fin = false;
             this.root.getChildren().add(this.ptFinal);
         }
-    }
+    }*/
 
-    @FXML
+  /*  @FXML
     private void eliminaBloqueos(ActionEvent event) {
         this.root.getChildren().removeAll(bloqueos);
         bloqueos.clear();
         puntos.clear();
         creaPuntos();
-    }
+    }*/
 
     public void pintarCarrito(JFXButton a) {
 
@@ -873,7 +870,7 @@ public class MapaController extends Controller implements Initializable {
         quita = true;
     }
 
-    public void quita(FontAwesomeIconView a) {
+    /*public void quita(FontAwesomeIconView a) {
         for (int i = 0; i < bloqueos.size(); i++) {
             if (bloqueos.get(i).equals(a)) {
                 this.root.getChildren().remove(bloqueos.get(i));
@@ -890,7 +887,7 @@ public class MapaController extends Controller implements Initializable {
                 i = bloqueos.size();
             }
         }
-    }
+    }*/
 
     public Timer getTime() {
         return time;
