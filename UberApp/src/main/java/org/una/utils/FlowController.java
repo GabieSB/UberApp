@@ -8,6 +8,7 @@ import java.util.logging.Level;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
@@ -103,7 +104,7 @@ public class FlowController {
             this.mainStage.show();
             this.mainStage.setHeight(600);
             this.mainStage.setWidth(800);
-            //this.mainStage.getIcons().add(new Image("clinicauna/resources/logo01.png"));
+            this.mainStage.getIcons().add(new Image(String.valueOf(getClass().getResource("/Imagenes/car.png"))));
             this.mainStage.setTitle("Uber App");
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(FlowController.class.getName()).log(Level.SEVERE, "Error inicializando la vista base.", ex);

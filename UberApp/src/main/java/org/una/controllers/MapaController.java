@@ -29,11 +29,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.StrokeLineCap;
-import org.una.utils.AppContext;
-import org.una.utils.Dijkstra;
-import org.una.utils.Floyd;
-import org.una.utils.Puntos;
-import org.una.utils.Ruta;
+import org.una.utils.*;
 
 
 public class MapaController extends Controller implements Initializable {
@@ -713,7 +709,8 @@ public class MapaController extends Controller implements Initializable {
 
         this.root.getChildren().remove(carrito);
 
-        this.carrito.setImage(new Image("UberApp/Imagenes/car.png"));
+        this.carrito.setImage(new Image(String.valueOf(getClass().getResource("Imagenes/car.png"))));
+
         this.carrito.setFitHeight(24);
         this.carrito.setFitWidth(24);
         this.carrito.setX(a.getLayoutX() - 5);

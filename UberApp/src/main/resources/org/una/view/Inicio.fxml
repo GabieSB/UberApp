@@ -13,7 +13,7 @@
          <children>
             <ImageView fitHeight="550.0" fitWidth="700.0" layoutX="3.0" layoutY="-2.0" pickOnBounds="true">
                <image>
-                  <Image url="@../Imagenes/fondomapa.png" />
+                  <Image url="@../../../Imagenes/fondomapa.png" />
                </image>
             </ImageView>
             <JFXButton fx:id="btn_comenzar" alignment="CENTER" buttonType="RAISED" layoutX="272.0" layoutY="149.0" onAction="#btn_comenzar" prefHeight="62.0" prefWidth="209.0" text="Comenzar      ">
@@ -23,7 +23,7 @@
                <graphic>
                   <ImageView fitHeight="46.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Imagenes/route.png" />
+                        <Image url="@../../../Imagenes/route.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -35,7 +35,7 @@
                <graphic>
                   <ImageView fitHeight="46.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Imagenes/instructions.png" />
+                        <Image url="@../../../Imagenes/instructions.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -47,7 +47,7 @@
                <graphic>
                   <ImageView fitHeight="46.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Imagenes/about.png" />
+                        <Image url="@../../../Imagenes/about.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -59,7 +59,7 @@
                <graphic>
                   <ImageView fitHeight="46.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Imagenes/salir.png" />
+                        <Image url="@../../../Imagenes/salir.png" />
                      </image>
                   </ImageView>
                </graphic>

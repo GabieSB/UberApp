@@ -12,7 +12,7 @@
    <children>
       <ImageView fx:id="img_fondo" fitHeight="600.0" fitWidth="800.0" layoutX="1.0" layoutY="2.0" pickOnBounds="true">
          <image>
-            <Image url="@../Imagenes/Fondoacer.jpg" />
+            <Image url="@../../../Imagenes/Fondoacer.jpg" />
          </image>
       </ImageView>
       <Label layoutX="222.0" layoutY="80.0" text="Universidad Nacional de Costa Rica" textFill="WHITE">
