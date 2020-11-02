@@ -701,19 +701,19 @@ public class MapaController extends Controller implements Initializable {
         }
     }*/
 
-  /*  @FXML
+    @FXML
     private void eliminaBloqueos(ActionEvent event) {
-        this.root.getChildren().removeAll(bloqueos);
+        /*this.root.getChildren().removeAll(bloqueos);
         bloqueos.clear();
         puntos.clear();
-        creaPuntos();
-    }*/
+        creaPuntos();*/
+    }
 
     public void pintarCarrito(JFXButton a) {
 
         this.root.getChildren().remove(carrito);
 
-        this.carrito.setImage(new Image("simulador/resources/car.png"));
+        this.carrito.setImage(new Image("UberApp/Imagenes/car.png"));
         this.carrito.setFitHeight(24);
         this.carrito.setFitWidth(24);
         this.carrito.setX(a.getLayoutX() - 5);
