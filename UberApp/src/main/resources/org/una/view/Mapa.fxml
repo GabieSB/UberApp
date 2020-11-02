@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.controllers.MapaController">
    <children>
       <VBox id="VBox" alignment="CENTER" prefHeight="600.0" prefWidth="1200.0" styleClass="apWrapper" stylesheets="@style.css">
@@ -24,6 +23,7 @@
                         <Insets />
                      </HBox.margin>
                      <children>
+                        <JFXButton onAction="#atrasButtonOnAction" text="Atrás" />
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="461.0" styleClass="title" text="MAPA DE TRANSPORTE">
                            <VBox.margin>
                               <Insets bottom="20.0" />

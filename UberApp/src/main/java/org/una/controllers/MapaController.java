@@ -889,4 +889,10 @@ public class MapaController extends Controller implements Initializable {
     public Timer getTime() {
         return time;
     }
+
+    public void atrasButtonOnAction(ActionEvent actionEvent) {
+
+        
+        FlowController.getInstance().goMain();
+    }
 }
