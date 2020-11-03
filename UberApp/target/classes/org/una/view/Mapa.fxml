@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
 <AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.controllers.MapaController">
    <children>
       <VBox id="VBox" alignment="CENTER" prefHeight="600.0" prefWidth="1200.0" styleClass="apWrapper" stylesheets="@style.css">
@@ -24,6 +23,7 @@
                         <Insets />
                      </HBox.margin>
                      <children>
+                        <JFXButton onAction="#atrasButtonOnAction" text="Atrás" />
                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="44.0" prefWidth="461.0" styleClass="title" text="MAPA DE TRANSPORTE">
                            <VBox.margin>
                               <Insets bottom="20.0" />
@@ -62,6 +62,16 @@
                                           <Insets bottom="10.0" />
                                        </VBox.margin>
                                     </HBox>
+                                    <ImageView fx:id="iv_inicioViaje" fitHeight="26.0" fitWidth="47.0" onMouseClicked="#inicioViaje" pickOnBounds="true" preserveRatio="true" translateX="20.0" translateY="-5.0">
+                                       <image>
+                                          <Image url="@../../../Imagenes/standing-up-man-.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="iv_finalViaje" fitHeight="26.0" fitWidth="47.0" onMouseClicked="#finalViaje" pickOnBounds="true" preserveRatio="true" translateX="120.0" translateY="-30.0">
+                                       <image>
+                                          <Image url="@../../../Imagenes/placeholder-filled-point.png" />
+                                       </image>
+                                    </ImageView>
                                     <HBox alignment="CENTER" prefHeight="23.0" prefWidth="430.0" spacing="65.0">
 
                               </HBox>
@@ -177,9 +187,14 @@
                               <JFXButton buttonType="RAISED" onAction="#quitaUnBloqueo" text="Quitar Bloqueos">
 
                         </JFXButton>
-                              <JFXButton fx:id="comenzar" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#comenzar" text=" ">
-
-                        </JFXButton>
+                              <JFXButton fx:id="comenzar" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#comenzar" prefHeight="35.0" prefWidth="59.0" text=" ">
+                                 <graphic>
+                                    <ImageView fitHeight="18.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Imagenes/silueta-frontal-de-coche-deportivo.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic></JFXButton>
                               <JFXButton buttonType="RAISED" contentDisplay="RIGHT" onAction="#eliminaBloqueos" text="Limpiar Bloqueos">
 
                         </JFXButton>

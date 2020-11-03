@@ -25,6 +25,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -34,6 +35,8 @@ import org.una.utils.*;
 
 public class MapaController extends Controller implements Initializable {
 
+    public ImageView iv_inicioViaje;
+    public ImageView iv_finalViaje;
     @FXML
     private JFXButton btnInter_1;
     @FXML
@@ -246,10 +249,6 @@ public class MapaController extends Controller implements Initializable {
 
     @FXML
     private ToggleGroup trafico;
-   /* @FXML
-    private FontAwesomeIconView inicioViaje;
-    @FXML
-    private MaterialDesignIconView finalViaje;*/
     @FXML
     private JFXRadioButton traficoNormal;
     @FXML
@@ -282,7 +281,7 @@ public class MapaController extends Controller implements Initializable {
     private ArrayList<Puntos> puntos;
     private ArrayList<Line> lines;
     private ArrayList<Line> linesVer;
-   // private FontAwesomeIconView icon;
+    private ImageView icon;
     private Dijkstra dijks;
     private Floyd floy;
     private JFXButton start;
@@ -290,9 +289,9 @@ public class MapaController extends Controller implements Initializable {
     private Boolean inicio;
     private Boolean fin;
     private Boolean quita;
-    /*private FontAwesomeIconView ptInicio;
-    private MaterialDesignIconView ptFinal;
-    private ArrayList<FontAwesomeIconView> bloqueos;*/
+    private ImageView ptInicio;
+    private ImageView ptFinal;
+    private ArrayList<ImageView> bloqueos;
     private ImageView carrito;
     private Timer time;
     private Integer tiempo;
@@ -319,22 +318,16 @@ public class MapaController extends Controller implements Initializable {
         creaPuntos();
         this.dijks = new Dijkstra(this.puntos);
         this.floy = new Floyd(this.puntos);
-        //click();
+        click();
         ocultaBotones(true);
         this.start = null;
         this.end = null;
         this.inicio = false;
         this.fin = false;
         this.quita = false;
-       /* this.ptInicio = new FontAwesomeIconView();
-        this.ptInicio.setGlyphName("STREET_VIEW");
-        this.ptInicio.setGlyphSize(15);
-        this.ptInicio.setFill(Color.DARKMAGENTA);
-        this.ptFinal = new MaterialDesignIconView();
-        this.ptFinal.setGlyphName("MAP_MARKER_RADIUS");
-        this.ptFinal.setGlyphSize(15);
-        this.ptFinal.setFill(Color.DARKMAGENTA);
-        this.bloqueos = new ArrayList();*/
+        this.ptInicio = new ImageView();
+        this.ptFinal = new ImageView();
+        this.bloqueos = new ArrayList();
         this.carrito = new ImageView();
         AppContext.getInstance().set("root", root);
     }
@@ -495,35 +488,32 @@ public class MapaController extends Controller implements Initializable {
             }
         }
 
-        /*if (this.tgAccidente.isSelected()) {
-            icon = new FontAwesomeIconView(FontAwesomeIcon.AMBULANCE);
-            icon.setFill(Color.CRIMSON);
+        if (this.tgAccidente.isSelected()) {
+            icon = new ImageView("@../../../Imagenes/ambulance.png");
         } else if (this.tgCosevi.isSelected()) {
-            icon = new FontAwesomeIconView(FontAwesomeIcon.EXCLAMATION_TRIANGLE);
-            icon.setFill(Color.ORANGERED);
+            icon = new ImageView("@../../../Imagenes/firmar.png");
         }
         lento(a, false);
         icon.setLayoutX(a.getLayoutX());
         icon.setLayoutY(a.getLayoutY() + 5);
-        icon.setSize("15");
-        con.setOnMouseClicked((e) -> {
+        icon.setOnMouseClicked((e) -> {
             if (quita) {
-                quita((FontAwesomeIconView) e.getSource());
+                //quita((FontAwesomeIconView) e.getSource());
             }
-        });*/
-        //this.bloqueos.add(icon);
-        //this.root.getChildren().add(icon);
+        });
+        this.bloqueos.add(icon);
+        this.root.getChildren().add(icon);
 
     }
 
-    /*public void click() {
-        this.inicioViaje.setOnMouseClicked((e) -> {
+    public void click() {
+       this.iv_inicioViaje.setOnMouseClicked((e) -> {
             this.inicio = true;
             this.fin = false;
             ocultaBotones(false);
             tiempo = 0;
         });
-        this.finalViaje.setOnMouseClicked((e) -> {
+        this.iv_finalViaje.setOnMouseClicked((e) -> {
             this.root.getChildren().removeAll(lines);
             this.root.getChildren().removeAll(linesVer);
             this.fin = true;
@@ -561,7 +551,7 @@ public class MapaController extends Controller implements Initializable {
                 ocultaBotones(true);
             });
         }
-    }*/
+    }
 
     public void destinos() {
         for (int i = 0; i < puntos.size(); i++) {
@@ -634,10 +624,10 @@ public class MapaController extends Controller implements Initializable {
             if (tiempo == 0) {
                 tiempo = 1;
             }
-            /*this.root.getChildren().remove(this.ptInicio);
+            this.root.getChildren().remove(this.ptInicio);
             this.root.getChildren().add(this.ptInicio);
             this.root.getChildren().remove(this.ptFinal);
-            this.root.getChildren().add(this.ptFinal);*/
+            this.root.getChildren().add(this.ptFinal);
         } else {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
@@ -667,10 +657,10 @@ public class MapaController extends Controller implements Initializable {
             }
             this.root.getChildren().addAll(linesVer);
             destinos();
-           /* this.root.getChildren().remove(this.ptInicio);
+           this.root.getChildren().remove(this.ptInicio);
             this.root.getChildren().add(this.ptInicio);
             this.root.getChildren().remove(this.ptFinal);
-            this.root.getChildren().add(this.ptFinal);*/
+            this.root.getChildren().add(this.ptFinal);
         } else {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Error");
@@ -680,11 +670,9 @@ public class MapaController extends Controller implements Initializable {
         }
     }
 
-   /* public void iniFin(JFXButton a) {
+   public void iniFin(JFXButton a) {
         if (this.inicio) {
             this.root.getChildren().remove(this.ptInicio);
-            this.ptInicio.setX(a.getLayoutX());
-            this.ptInicio.setY(a.getLayoutY() + 5);
             this.inicio = false;
             this.root.getChildren().add(this.ptInicio);
         }
@@ -695,21 +683,21 @@ public class MapaController extends Controller implements Initializable {
             this.fin = false;
             this.root.getChildren().add(this.ptFinal);
         }
-    }*/
+    }
 
     @FXML
     private void eliminaBloqueos(ActionEvent event) {
-        /*this.root.getChildren().removeAll(bloqueos);
+        this.root.getChildren().removeAll(bloqueos);
         bloqueos.clear();
         puntos.clear();
-        creaPuntos();*/
+        creaPuntos();
     }
 
     public void pintarCarrito(JFXButton a) {
 
         this.root.getChildren().remove(carrito);
 
-        this.carrito.setImage(new Image(String.valueOf(getClass().getResource("Imagenes/car.png"))));
+        this.carrito.setImage(new Image(String.valueOf(getClass().getResource("@../../../Imagenes/car.png"))));
 
         this.carrito.setFitHeight(24);
         this.carrito.setFitWidth(24);
@@ -867,7 +855,7 @@ public class MapaController extends Controller implements Initializable {
         quita = true;
     }
 
-    /*public void quita(FontAwesomeIconView a) {
+    public void quita(ImageView a) {
         for (int i = 0; i < bloqueos.size(); i++) {
             if (bloqueos.get(i).equals(a)) {
                 this.root.getChildren().remove(bloqueos.get(i));
@@ -884,15 +872,21 @@ public class MapaController extends Controller implements Initializable {
                 i = bloqueos.size();
             }
         }
-    }*/
+    }
 
     public Timer getTime() {
         return time;
     }
 
     public void atrasButtonOnAction(ActionEvent actionEvent) {
-
-        
         FlowController.getInstance().goMain();
+        FlowController.getInstance().getStage().centerOnScreen();
+    }
+
+
+    public void inicioViaje(MouseEvent mouseEvent) {
+    }
+
+    public void finalViaje(MouseEvent mouseEvent) {
     }
 }

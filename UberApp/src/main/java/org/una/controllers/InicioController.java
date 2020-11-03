@@ -33,23 +33,24 @@ public class InicioController extends Controller implements Initializable {
 
         FlowController.getInstance().goView("Mapa");
 
-        FlowController.getInstance().getStage().setWidth(1250);
+        FlowController.getInstance().getStage().setWidth(1225);
         FlowController.getInstance().getStage().setHeight(650);
         FlowController.getInstance().getStage().centerOnScreen();
     }
 
     public void btn_instruccion(ActionEvent actionEvent) {
+
         FlowController.getInstance().goView("Instrucciones");
     }
 
     public void btn_acercade(ActionEvent actionEvent) {
 
         FlowController.getInstance().goView("AcercaDe");
-        
 
     }
 
     public void btn_salir(ActionEvent actionEvent) {
+
         getStage().close();
     }
 }
