@@ -207,7 +207,7 @@
                   </VBox>
                   <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="730.0" styleClass="mapa" stylesheets="@style.css">
                      <children>
-                        <ImageView fitHeight="600.0" fitWidth="730.0" nodeOrientation="INHERIT" pickOnBounds="true">
+                        <ImageView fitHeight="600.0" fitWidth="730.0" nodeOrientation="INHERIT" onMouseClicked="#conClickEnMap" pickOnBounds="true">
                            <image>
                               <Image url="@../../../Imagenes/mapa.jpg" />
                            </image>

@@ -489,9 +489,9 @@ public class MapaController extends Controller implements Initializable {
         }
 
         if (this.tgAccidente.isSelected()) {
-            icon = new ImageView("@../../../Imagenes/ambulance.png");
+            icon = new ImageView(String.valueOf(getClass().getResource("Imagenes/ambulance.png")));
         } else if (this.tgCosevi.isSelected()) {
-            icon = new ImageView("@../../../Imagenes/firmar.png");
+            icon = new ImageView(String.valueOf(getClass().getResource("Imagenes/firmar.png")));
         }
         lento(a, false);
         icon.setLayoutX(a.getLayoutX());
@@ -695,14 +695,17 @@ public class MapaController extends Controller implements Initializable {
 
     public void pintarCarrito(JFXButton a) {
 
-        this.root.getChildren().remove(carrito);
+      //  this.root.getChildren().remove(carrito);
 
-        this.carrito.setImage(new Image(String.valueOf(getClass().getResource("@../../../Imagenes/car.png"))));
+        this.carrito.setImage(new Image(String.valueOf(getClass().getResource("/Imagenes/car.png"))));
 
         this.carrito.setFitHeight(24);
         this.carrito.setFitWidth(24);
+        System.out.println(a.getLayoutX());
         this.carrito.setX(a.getLayoutX() - 5);
         this.carrito.setY(a.getLayoutY() - 5);
+
+        System.out.println("Inicio x " + carrito.getX()  + " y " + carrito.getY());
 
         this.root.getChildren().add(carrito);
     }
@@ -718,21 +721,28 @@ public class MapaController extends Controller implements Initializable {
             @Override
             public void run() {
                 Platform.runLater(() -> {
-                    if (carrito.getX() != ruta.get(i).getIngreso().getLayoutX()
-                            || carrito.getY() != ruta.get(i).getIngreso().getLayoutY()) {
-                        root.getChildren().remove(carrito);
+
+
+                    System.out.println("Carrito: getX: "+carrito.getX()  + " getY " + carrito.getY()+  " ruta getX " + ruta.get(i).getIngreso().getLayoutX() + " ruta getY " + ruta.get(i).getIngreso().getLayoutY() );
+                    if (carrito.getX() != ruta.get(i).getIngreso().getLayoutX() || carrito.getY() != ruta.get(i).getIngreso().getLayoutY()) {
+
+                      //  root.getChildren().remove(carrito);
                         if (carrito.getX() < ruta.get(i).getIngreso().getLayoutX()) {
-                            carrito.setX(carrito.getX() + 1);
+                            carrito.setX(carrito.getX()+1);
+                            System.out.println("le setea x + 1");
                         } else if (carrito.getX() > ruta.get(i).getIngreso().getLayoutX()) {
                             carrito.setX(carrito.getX() - 1);
+                            System.out.println("le setea x - 1");
                         }
 
                         if (carrito.getY() < ruta.get(i).getIngreso().getLayoutY()) {
                             carrito.setY(carrito.getY() + 1);
+                            System.out.println("le setea y + 1");
                         } else if (carrito.getY() > ruta.get(i).getIngreso().getLayoutY()) {
                             carrito.setY(carrito.getY() - 1);
+                            System.out.println("le setea y - 1");
                         }
-                        root.getChildren().add(carrito);
+                       // root.getChildren().add(carrito);
                         tiempo++;
                         tiempoTotal.setText(Integer.toString(tiempo / 60));
                         if (tiempo / 60 > 0 && (tiempo / 40) * Integer.parseInt(aristaTotal.getText()) > 655) {
@@ -741,6 +751,7 @@ public class MapaController extends Controller implements Initializable {
                             costoTotal.setText("655");
                         }
                     } else {
+
                         i++;
                     }
                     if (i == ruta.size()) {
@@ -888,5 +899,10 @@ public class MapaController extends Controller implements Initializable {
     }
 
     public void finalViaje(MouseEvent mouseEvent) {
+    }
+
+    public void conClickEnMap(MouseEvent mouseEvent) {
+
+        System.out.println("x: " + mouseEvent.getX() + " y: " + mouseEvent.getY());
     }
 }
