@@ -9,6 +9,17 @@
 
 }
 
+.buttonSelected {
+    -fx-font-family: "Showcard Gothic";
+    -fx-font-size: 15px;
+    -fx-background-color: #671983;
+    -fx-background-radius: 6%;
+    -fx-border-radius: 6%;
+    -fx-border-width: 2px;
+    -fx-border-color: #003333;
+
+}
+
 .jfx-button:hover {
     -fx-font-size: 14px;
     -fx-effect: dropshadow( gaussian, #003333, 15, 0.5, 0.0, 0.0);
