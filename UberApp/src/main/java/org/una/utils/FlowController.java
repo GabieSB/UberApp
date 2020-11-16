@@ -102,8 +102,8 @@ public class FlowController {
         try {
             this.mainStage.setScene(new Scene(FXMLLoader.load(App.class.getResource("view/Inicio.fxml"), this.idioma)));
             this.mainStage.show();
-            this.mainStage.setHeight(600);
-            this.mainStage.setWidth(800);
+            this.mainStage.setHeight(580);
+            this.mainStage.setWidth(700);
             this.mainStage.getIcons().add(new Image(String.valueOf(getClass().getResource("/Imagenes/car.png"))));
             this.mainStage.setTitle("Uber App");
         } catch (IOException ex) {

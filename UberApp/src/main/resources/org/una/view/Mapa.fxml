@@ -14,7 +14,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.controllers.MapaController">
    <children>
-      <VBox id="VBox" alignment="CENTER" prefHeight="600.0" prefWidth="1200.0" styleClass="apWrapper" stylesheets="@style.css">
+      <VBox id="VBox" alignment="CENTER" prefHeight="600.0" prefWidth="1200.0" styleClass="vbox" stylesheets="@style.css">
          <children>
             <HBox prefHeight="719.0" prefWidth="1160.0" spacing="10.0">
                <children>
@@ -38,12 +38,12 @@
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <JFXToggleButton fx:id="tgAccidente" minHeight="-Infinity" minWidth="-Infinity" onAction="#accidente" prefHeight="40.0" prefWidth="152.0" text="Accidentes" toggleColor="#ff4000" toggleLineColor="#515151" unToggleLineColor="#cccccc">
+                                    <JFXToggleButton fx:id="tgAccidente" minHeight="-Infinity" minWidth="-Infinity" onAction="#accidente" prefHeight="40.0" prefWidth="152.0" text="Accidentes" textFill="WHITE" toggleColor="#ff4000" toggleLineColor="#515151" unToggleLineColor="#cccccc">
                                        <toggleGroup>
                                           <ToggleGroup fx:id="bloqueo" />
                                        </toggleGroup>
                                     </JFXToggleButton>
-                                    <JFXToggleButton fx:id="tgCosevi" alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" onAction="#cosevi" prefHeight="40.0" prefWidth="152.0" text="COSEVI" toggleColor="#ffbf00" toggleGroup="$bloqueo" toggleLineColor="#515151" unToggleLineColor="#cccccc" />
+                                    <JFXToggleButton fx:id="tgCosevi" alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" onAction="#cosevi" prefHeight="40.0" prefWidth="152.0" text="COSEVI" textFill="WHITE" toggleColor="#ffbf00" toggleGroup="$bloqueo" toggleLineColor="#515151" unToggleLineColor="#cccccc" />
                                  </children>
                               </VBox>
                               <VBox prefHeight="200.0" prefWidth="210.0">
@@ -96,7 +96,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="24.0" prefWidth="430.0" spacing="10.0">
                            <children>
-                              <JFXRadioButton fx:id="traficoNormal" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#modoTrafico" prefHeight="32.0" prefWidth="30.0" selected="true" text=" ">
+                              <JFXRadioButton fx:id="traficoNormal" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#modoTrafico" prefHeight="32.0" prefWidth="30.0" selected="true" styleClass="jfx-radio-button" text=" ">
                                  <HBox.margin>
                                     <Insets left="53.0" right="53.0" />
                                  </HBox.margin>
@@ -104,12 +104,12 @@
                                     <ToggleGroup fx:id="trafico" />
                                  </toggleGroup>
                               </JFXRadioButton>
-                              <JFXRadioButton fx:id="traficoModerado" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#modoTrafico" prefHeight="32.0" prefWidth="30.0" text=" " toggleGroup="$trafico">
+                              <JFXRadioButton fx:id="traficoModerado" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#modoTrafico" prefHeight="32.0" prefWidth="30.0" styleClass="jfx-radio-button" text=" " toggleGroup="$trafico">
                                  <HBox.margin>
                                     <Insets left="53.0" right="53.0" />
                                  </HBox.margin>
                               </JFXRadioButton>
-                              <JFXRadioButton fx:id="traficoLento" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#modoTrafico" prefHeight="32.0" prefWidth="30.0" text=" " toggleGroup="$trafico">
+                              <JFXRadioButton fx:id="traficoLento" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#modoTrafico" prefHeight="32.0" prefWidth="30.0" styleClass="jfx-radio-button" text=" " toggleGroup="$trafico">
                                  <HBox.margin>
                                     <Insets left="53.0" right="53.0" />
                                  </HBox.margin>
@@ -150,6 +150,13 @@
                                  <HBox.margin>
                                     <Insets left="53.0" />
                                  </HBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Imagenes/brujula.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                               </JFXButton>
                            </children>
                         </HBox>

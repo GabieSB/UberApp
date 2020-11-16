@@ -524,14 +524,14 @@ public class MapaController extends Controller implements Initializable {
         if (this.tgAccidente.isSelected()) {
             icon = new ImageView(String.valueOf(getClass().getResource("Imagenes/ambulance.png")));
         } else if (this.tgCosevi.isSelected()) {
-            icon = new ImageView(String.valueOf(getClass().getResource("Imagenes/firmar.png")));
+            icon = new ImageView(String.valueOf(getClass().getResource("Imagenes/cerrado.png")));
         }
         lento(a, false);
         icon.setLayoutX(a.getLayoutX());
         icon.setLayoutY(a.getLayoutY() + 5);
         icon.setOnMouseClicked((e) -> {
             if (quita) {
-                //quita((FontAwesomeIconView) e.getSource());
+                quita((ImageView) e.getSource());
             }
         });
         this.bloqueos.add(icon);

@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="acp_instrucciones" prefHeight="515.0" prefWidth="672.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.controllers.InstruccionesController">
+<AnchorPane fx:id="acp_instrucciones" prefHeight="550.0" prefWidth="700.0" styleClass="vbox" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.una.controllers.InstruccionesController">
    <children>
-      <ImageView fitHeight="600.0" fitWidth="800.0" layoutX="-2.0" layoutY="-1.0" pickOnBounds="true">
-         <image>
-            <Image url="@../../../Imagenes/Fondoinstr.jpg" />
-         </image>
-      </ImageView>
-      <Label fx:id="lbl_instrucciones" layoutX="294.0" layoutY="53.0" text="Instrucciones:" textFill="#011140">
+      <Label fx:id="lbl_instrucciones" layoutX="176.0" layoutY="25.0" styleClass="lblTitulo" stylesheets="@style.css" text="Instrucciones:" textFill="#011140">
          <font>
             <Font name="Sitka Text" size="29.0" />
          </font>
       </Label>
-      <JFXButton alignment="CENTER" layoutX="30.0" layoutY="25.0" onAction="#atrasButtonOnAction" prefHeight="47.0" prefWidth="102.0" text="Atras" />
+      <JFXButton alignment="CENTER" layoutX="14.0" layoutY="14.0" onAction="#atrasButtonOnAction" prefHeight="47.0" prefWidth="102.0" text="Atras" />
+      <JFXTextArea editable="false" focusColor="WHITE" layoutX="33.0" layoutY="106.0" prefHeight="417.0" prefWidth="635.0" stylesheets="@style.css" text="1.Bloqueo de Calles: Al selecionar una acción se habilita en el mapa los puntos donde el usuario puede colocar en cualquiera de ellas accidentes o calle en mantenimiento. &#10;&#10; 2.Punto de Partida: Se deberá seleccionar el origen y el destino a seguir.    &#10;&#10;3.  Modo de Tráfico: Están las opciones de normal para tráfico regular, moderado para un tráfico medianamente pesado, y lento donde el tráfico esta muy pesado y se avanza poco.      &#10;&#10;4.Imagen Vehículo: luego se seleccionar los pasos anteriores basta con darle click a esta imagen para ver el auto moverse sobre el mapa. &#10;&#10;5.Limpiar Bloqueos: Aquí se eliminarán todos los obstáculos en la vía.&#10;" unFocusColor="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXTextArea>
    </children>
 </AnchorPane>

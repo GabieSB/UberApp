@@ -1,26 +1,61 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+.lblTitulo{
+    -fx-font-family: "Arial Black" !important;
+    -fx-font-size: 50px!important;
+    -fx-text-fill: #fff!important;
+}
 .jfx-button {
-    -fx-font-family: "Showcard Gothic";
+    -fx-font-family: "Arial Black";
     -fx-font-size: 15px;
-    -fx-background-color: #00ffff;
+    -fx-background-color: #0277bd;
     -fx-background-radius: 6%;
     -fx-border-radius: 6%;
-    -fx-border-width: 2px;
     -fx-border-color: #003333;
+    -fx-text-fill: #fff;
 
 }
 
 .buttonSelected {
-    -fx-font-family: "Showcard Gothic";
+    -fx-font-family: "Arial Black";
     -fx-font-size: 15px;
     -fx-background-color: #671983;
     -fx-background-radius: 6%;
     -fx-border-radius: 6%;
-    -fx-border-width: 2px;
     -fx-border-color: #003333;
 
 }
 
 .jfx-button:hover {
     -fx-font-size: 14px;
-    -fx-effect: dropshadow( gaussian, #003333, 15, 0.5, 0.0, 0.0);
+    -fx-effect: dropshadow( gaussian, #ffffff, 15, 0.5, 0.0, 0.0);
+}
+
+.jfx-radio-button {
+    -fx-font-size: 22px;
+    -fx-alignment: center;
+    -jfx-selected-color: #000;
+    -jfx-unselected-color: #ccc;
+    -fx-unselected-color: transparent;
+}
+
+.label {
+    -fx-text-fill: #fff;
+    -fx-font-size: 16px;
+    -fx-alignment: center;
+    -fx-font-family: 'Roboto', sans-serif;
+}
+.vbox{
+    -fx-background-color: #212121;
+}
+
+.acercade{
+    -fx-text-fill: #fff;
+    -fx-font-size: 22px;
+    -fx-alignment: center;
+    -fx-font-family: 'Roboto', sans-serif;
+}
+
+.text-area{
+    -fx-text-fill: #ffff;
 }
