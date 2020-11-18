@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.una.unaeropuertoclient.utils;
+package org.una.utils;
 
 import java.util.Optional;
 import javafx.scene.control.Alert;

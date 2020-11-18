@@ -38,12 +38,12 @@
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <JFXToggleButton fx:id="tgAccidente" minHeight="-Infinity" minWidth="-Infinity" onAction="#accidente" prefHeight="40.0" prefWidth="152.0" text="Accidentes" textFill="WHITE" toggleColor="#ff4000" toggleLineColor="#515151" unToggleLineColor="#cccccc">
+                                    <JFXToggleButton fx:id="tgAccidente" alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" onAction="#accidente" prefHeight="40.0" prefWidth="178.0" text="Accidentes" textFill="WHITE" toggleColor="#ff4000" toggleLineColor="#515151" unToggleLineColor="#cccccc">
                                        <toggleGroup>
                                           <ToggleGroup fx:id="bloqueo" />
                                        </toggleGroup>
                                     </JFXToggleButton>
-                                    <JFXToggleButton fx:id="tgCosevi" alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" onAction="#cosevi" prefHeight="40.0" prefWidth="152.0" text="COSEVI" textFill="WHITE" toggleColor="#ffbf00" toggleGroup="$bloqueo" toggleLineColor="#515151" unToggleLineColor="#cccccc" />
+                                    <JFXToggleButton fx:id="tgCosevi" alignment="CENTER_LEFT" minHeight="-Infinity" minWidth="-Infinity" onAction="#cosevi" prefHeight="40.0" prefWidth="192.0" text="COSEVI" textFill="WHITE" toggleColor="#ffbf00" toggleGroup="$bloqueo" toggleLineColor="#515151" unToggleLineColor="#cccccc" />
                                  </children>
                               </VBox>
                               <VBox prefHeight="200.0" prefWidth="210.0">

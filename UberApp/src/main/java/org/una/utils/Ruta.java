@@ -53,7 +53,8 @@ public class Ruta {
     }
 
     public Integer getPeso() {
-        return peso;
+        if(peso != null) return peso;
+        else return 0;
     }
 
     public void setPeso(Integer peso) {
