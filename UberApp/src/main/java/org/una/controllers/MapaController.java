@@ -747,6 +747,8 @@ public class MapaController extends Controller implements Initializable {
                 distancia += rutaEnCurso.getPeso();
 
                 aristaTotal.setText(String.valueOf(distancia));
+
+                System.out.println("peso " + rutaEnCurso.getPeso());
                 int tiempoCurso = rutaEnCurso.getPeso()*modo;
                 tiempo+=tiempoCurso/3000;
                 tiempoTotal.setText(String.valueOf(tiempo));
