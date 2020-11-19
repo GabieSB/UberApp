@@ -24,7 +24,7 @@
                      </HBox.margin>
                      <children>
                         <JFXButton onAction="#atrasButtonOnAction" text="Atrás" />
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="430.0" styleClass="title" text="MAPA DE TRANSPORTE">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="430.0" styleClass="lblTitulo2" text="MAPA DE TRANSPORTE">
                            <VBox.margin>
                               <Insets bottom="20.0" />
                            </VBox.margin>
@@ -37,11 +37,55 @@
                               <JFXButton fx:id="nuevarutaButton" alignment="CENTER" onAction="#nuevaRutaOnClick" prefHeight="31.0" prefWidth="114.0" text="Nueva ruta" />
                            </children>
                         </HBox>
-                        <VBox fx:id="paneOpciones" prefHeight="495.0" prefWidth="438.0">
+                        <Label alignment="CENTER" prefHeight="22.0" prefWidth="462.0" styleClass="lblTitulo2" text="ALGORITMO">
+                           <VBox.margin>
+                              <Insets bottom="15.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="24.0" prefWidth="430.0" spacing="10.0">
+                           <children>
+                              <Label contentDisplay="CENTER" prefHeight="22.0" prefWidth="68.0" styleClass="label-title" text="Dijkstra" />
+                              <Label prefHeight="22.0" prefWidth="54.0" styleClass="label-title" text="Floyd" />
+                           </children>
+                           <VBox.margin>
+                              <Insets bottom="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox fx:id="algotitmoPane" alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="269.0" spacing="10.0">
+                           <children>
+                              <JFXRadioButton fx:id="dijkstra" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#tipoAlgoritmo" prefHeight="32.0" prefWidth="30.0" selected="true" text=" ">
+                                 <HBox.margin>
+                                    <Insets right="30.0" />
+                                 </HBox.margin>
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="tipoAlgoritmo" />
+                                 </toggleGroup>
+                              </JFXRadioButton>
+                              <JFXRadioButton fx:id="floyd" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#tipoAlgoritmo" prefHeight="32.0" prefWidth="30.0" text=" " toggleGroup="$tipoAlgoritmo">
+                                 <HBox.margin>
+                                    <Insets right="78.0" />
+                                 </HBox.margin>
+                              </JFXRadioButton>
+                              <JFXButton fx:id="btnVer" buttonType="RAISED" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="22.0" text=" ">
+            
+                                                   <HBox.margin>
+                                    <Insets left="53.0" />
+                                 </HBox.margin>
+                                 <graphic>
+                                    <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../../../Imagenes/brujula.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </JFXButton>
+                           </children>
+                        </HBox>
+                        <VBox fx:id="paneOpciones" prefHeight="467.0" prefWidth="430.0">
                            <children>
                               <HBox alignment="CENTER" prefHeight="23.0" prefWidth="430.0" spacing="65.0">
                                  <children>
-                                    <Label alignment="CENTER" prefHeight="22.0" prefWidth="462.0" styleClass="label-title-2" text="BLOQUEOS DE CALLES" />
+                                    <Label alignment="CENTER" prefHeight="22.0" prefWidth="462.0" styleClass="lblTitulo2" text="BLOQUEOS DE CALLES" />
                                  </children>
                               </HBox>
                               <HBox prefHeight="50.0" prefWidth="430.0" spacing="10.0">
@@ -58,7 +102,7 @@
                                     </HBox>
                                  </children>
                               </HBox>
-                              <Label alignment="CENTER" prefHeight="22.0" prefWidth="462.0" styleClass="label-title-2" text="MODO DE TRAFICO">
+                              <Label alignment="CENTER" prefHeight="22.0" prefWidth="462.0" styleClass="lblTitulo2" text="MODO DE TRÁFICO">
                                  <VBox.margin>
                                     <Insets bottom="15.0" top="5.0" />
                                  </VBox.margin>
@@ -73,7 +117,7 @@
                                     <Insets bottom="10.0" />
                                  </VBox.margin>
                               </HBox>
-                              <HBox alignment="CENTER" prefHeight="24.0" prefWidth="430.0" spacing="10.0">
+                              <HBox alignment="CENTER" prefHeight="15.0" prefWidth="430.0" spacing="10.0">
                                  <children>
                                     <JFXRadioButton fx:id="traficoNormal" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#modoTrafico" prefHeight="32.0" prefWidth="30.0" selected="true" styleClass="jfx-radio-button" text=" ">
                                        <HBox.margin>
@@ -95,51 +139,7 @@
                                     </JFXRadioButton>
                                  </children>
                               </HBox>
-                              <Label alignment="CENTER" prefHeight="22.0" prefWidth="462.0" styleClass="label-title-2" text="ALGORITMO">
-                                 <VBox.margin>
-                                    <Insets bottom="15.0" top="5.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <HBox alignment="CENTER" prefHeight="24.0" prefWidth="430.0" spacing="10.0">
-                                 <children>
-                                    <Label contentDisplay="CENTER" prefHeight="22.0" prefWidth="68.0" styleClass="label-title" text="Dijkstra" />
-                                    <Label prefHeight="22.0" prefWidth="54.0" styleClass="label-title" text="Floyd" />
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets bottom="10.0" />
-                                 </VBox.margin>
-                              </HBox>
-                              <HBox alignment="CENTER_RIGHT" prefHeight="24.0" prefWidth="430.0" spacing="10.0">
-                                 <children>
-                                    <JFXRadioButton fx:id="dijkstra" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#tipoAlgoritmo" prefHeight="32.0" prefWidth="30.0" selected="true" text=" ">
-                                       <HBox.margin>
-                                          <Insets right="30.0" />
-                                       </HBox.margin>
-                                       <toggleGroup>
-                                          <ToggleGroup fx:id="tipoAlgoritmo" />
-                                       </toggleGroup>
-                                    </JFXRadioButton>
-                                    <JFXRadioButton fx:id="floyd" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#tipoAlgoritmo" prefHeight="32.0" prefWidth="30.0" text=" " toggleGroup="$tipoAlgoritmo">
-                                       <HBox.margin>
-                                          <Insets right="78.0" />
-                                       </HBox.margin>
-                                    </JFXRadioButton>
-                                    <JFXButton fx:id="btnVer" buttonType="RAISED" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#mostrarRuta" prefHeight="22.0" prefWidth="22.0" text=" ">
-                  
-                                                   <HBox.margin>
-                                          <Insets left="53.0" />
-                                       </HBox.margin>
-                                       <graphic>
-                                          <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../../../Imagenes/brujula.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </JFXButton>
-                                 </children>
-                              </HBox>
-                              <Label alignment="CENTER" prefHeight="22.0" prefWidth="462.0" styleClass="label-title-2" text="TARIFA">
+                              <Label alignment="CENTER" prefHeight="22.0" prefWidth="462.0" styleClass="lblTitulo2" text="TARIFA">
                                  <VBox.margin>
                                     <Insets bottom="10.0" top="5.0" />
                                  </VBox.margin>
@@ -173,10 +173,10 @@
                                     <Insets top="15.0" />
                                  </VBox.margin>
                                  <children>
-                                    <JFXButton fx:id="quitarBloqueosButton" buttonType="RAISED" onAction="#quitaUnBloqueo" text="Quitar Bloqueos">
+                                    <JFXButton fx:id="quitarBloqueosButton" buttonType="RAISED" onAction="#quitaUnBloqueo" styleClass="buttonSelected" text="Quitar un bloqueo">
 
                         </JFXButton>
-                                    <JFXButton fx:id="comenzar" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#comenzar" prefHeight="35.0" prefWidth="59.0" text=" ">
+                                    <JFXButton fx:id="comenzar" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#comenzar" prefHeight="35.0" prefWidth="59.0" styleClass="buttonSelected" text=" ">
                                        <graphic>
                                           <ImageView fitHeight="18.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -185,7 +185,7 @@
                                           </ImageView>
                                        </graphic>
                                     </JFXButton>
-                                    <JFXButton fx:id="limpiarBloqueosButton" buttonType="RAISED" contentDisplay="RIGHT" onAction="#eliminaBloqueos" text="Limpiar Bloqueos">
+                                    <JFXButton fx:id="limpiarBloqueosButton" buttonType="RAISED" contentDisplay="RIGHT" onAction="#eliminaBloqueos" styleClass="buttonSelected" text="Limpiar Bloqueos">
 
                         </JFXButton>
                                  </children>

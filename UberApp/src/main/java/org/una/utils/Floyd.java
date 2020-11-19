@@ -135,7 +135,7 @@ public class Floyd {
 
             }
         }
-        System.out.println(pos);
+
         return pos;
     }
 
@@ -144,15 +144,20 @@ public class Floyd {
         Integer termina = 0;
         while (termina < 500) {
             if (!direcciones[buscaBoton(start)][buscaBoton(end)].equals(end)) {
-                ruta.add(new Ruta(end, direcciones[buscaBoton(start)][buscaBoton(end)], (pesos[buscaBoton(start)][buscaBoton(end)])*100, 0, true));
-                end = direcciones[buscaBoton(start)][buscaBoton(end)];
+                int peso = (pesos[buscaBoton(start)][buscaBoton(end)]);
+                //System.out.println("Peso dado " + peso);
+                if(peso>0){
+                    ruta.add(new Ruta(end, direcciones[buscaBoton(start)][buscaBoton(end)], peso, 0, true));
+                    end = direcciones[buscaBoton(start)][buscaBoton(end)];
+                }
+
             }
             if (end.equals(start)) {
                 termina = 500;
             }
             termina++;
         }
-        ruta.add(new Ruta(end, start, 12, 0, true));
+        if(pesos[buscaBoton(start)][buscaBoton(end)]>0) ruta.add(new Ruta(end, start, (pesos[buscaBoton(start)][buscaBoton(end)]), 0, true));
 
         Collections.reverse(ruta);
         Integer saltos = 1;

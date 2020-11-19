@@ -5,6 +5,11 @@
     -fx-font-size: 50px!important;
     -fx-text-fill: #fff!important;
 }
+.lblTitulo2{
+    -fx-font-family: "Arial Black" !important;
+    -fx-font-size: 15px!important;
+    -fx-text-fill: #fff!important;
+}
 .jfx-button {
     -fx-font-family: "Arial Black";
     -fx-font-size: 15px;
@@ -15,15 +20,25 @@
     -fx-text-fill: #fff;
 
 }
-
-.buttonSelected {
+.jfx-button:disabled{
     -fx-font-family: "Arial Black";
     -fx-font-size: 15px;
     -fx-background-color: #671983;
     -fx-background-radius: 6%;
     -fx-border-radius: 6%;
     -fx-border-color: #003333;
+    -fx-opacity: 1;
+}
 
+.buttonSelected {
+
+    -fx-font-family: "Arial Black";
+    -fx-font-size: 15px;
+    -fx-background-color: #0277bd;
+    -fx-background-radius: 6%;
+    -fx-border-radius: 6%;
+    -fx-border-color: #003333;
+    -fx-text-fill: #fff;
 }
 
 .jfx-button:hover {
@@ -34,8 +49,8 @@
 .jfx-radio-button {
     -fx-font-size: 22px;
     -fx-alignment: center;
-    -jfx-selected-color: #000;
-    -jfx-unselected-color: #ccc;
+    -jfx-selected-color: #0277bd;
+    -jfx-unselected-color: #5e55d4;
     -fx-unselected-color: transparent;
 }
 
