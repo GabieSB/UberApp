@@ -151,7 +151,7 @@
                                     <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="70.0" styleClass="label-mapa" text="metros" />
                                  </children>
                               </HBox>
-                              <HBox alignment="CENTER_RIGHT" prefHeight="23.0" prefWidth="430.0" spacing="10.0">
+                              <HBox alignment="CENTER_RIGHT" prefHeight="23.0" prefWidth="430.0" spacing="10.0" styleClass="vbox">
                                  <children>
                                     <Label styleClass="label-title" text="Tiempo:" />
                                     <Label fx:id="tiempoTotal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="22.0" prefWidth="60.0" styleClass="label-title" text="0" />
@@ -164,13 +164,16 @@
                                     <Label fx:id="costoTotal" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="60.0" styleClass="label-title" text="0" />
                                     <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="70.0" styleClass="label-mapa" text="colones" />
                                  </children>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="38.0" prefWidth="430.0" spacing="15.0">
                                  <VBox.margin>
                                     <Insets top="15.0" />
                                  </VBox.margin>
                                  <children>
-                                    <JFXButton buttonType="RAISED" onAction="#quitaUnBloqueo" text="Quitar Bloqueos">
+                                    <JFXButton fx:id="quitarBloqueosButton" buttonType="RAISED" onAction="#quitaUnBloqueo" text="Quitar Bloqueos">
 
                         </JFXButton>
                                     <JFXButton fx:id="comenzar" alignment="CENTER" buttonType="RAISED" contentDisplay="CENTER" onAction="#comenzar" prefHeight="35.0" prefWidth="59.0" text=" ">
@@ -182,7 +185,7 @@
                                           </ImageView>
                                        </graphic>
                                     </JFXButton>
-                                    <JFXButton buttonType="RAISED" contentDisplay="RIGHT" onAction="#eliminaBloqueos" text="Limpiar Bloqueos">
+                                    <JFXButton fx:id="limpiarBloqueosButton" buttonType="RAISED" contentDisplay="RIGHT" onAction="#eliminaBloqueos" text="Limpiar Bloqueos">
 
                         </JFXButton>
                                  </children>

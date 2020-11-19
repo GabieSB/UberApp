@@ -38,6 +38,8 @@ public class MapaController extends Controller implements Initializable {
     public ImageView iv_finalViaje;
     public JFXButton nuevarutaButton;
     public VBox paneOpciones;
+    public JFXButton quitarBloqueosButton;
+    public JFXButton limpiarBloqueosButton;
     @FXML
     private JFXButton btnInter_1;
     @FXML
@@ -334,6 +336,7 @@ public class MapaController extends Controller implements Initializable {
         tiempoTotal.setText("");
         aristaTotal.setText("");
         costoTotal.setText("");
+        retroalimentacionDelViaje(false);
 
     }
 
@@ -385,7 +388,7 @@ public class MapaController extends Controller implements Initializable {
         path.getElements().add(new MoveTo(startX, startY));
         path.getElements().add(lineTo);
 
-        path.setStrokeWidth(1);
+        path.setStrokeWidth(2);
         path.setStroke(Color.YELLOWGREEN);
     }
 
@@ -393,13 +396,23 @@ public class MapaController extends Controller implements Initializable {
 
 
     private  void pintarRutaEnMapa(){
-        dijks.dijkstra(start,end);
+
+
         linesVer.clear();
 
         root.getChildren().removeAll(lines);
         lines.clear();
         path.getElements().clear();
-        pintarRuta(dijks.getRuta(), lines, Color.BLUE);
+        if(dijkstra.isSelected()){
+            dijks.dijkstra(start,end);
+            pintarRuta(dijks.getRuta(), lines, Color.BLUE);
+        }
+        if(floyd.isSelected()){
+            System.out.println("Pinta floyd");
+            floy.floyd(start, end);
+            pintarRuta(floy.getRuta(), lines, Color.BLUE );
+        }
+
         //root.getChildren().addAll(lines);
     }
 
@@ -526,8 +539,11 @@ public class MapaController extends Controller implements Initializable {
     }
 
     public void bloqueo(JFXButton a) {
-        JFXButton cerrar = cierraCalles(a);
+        JFXButton cerrar  = null;
+        if(!tgCosevi.isSelected()) cerrar = cierraCalles(a);
+
         if (cerrar == null) {
+            System.out.println("Cierra en == null");
             for (int i = 0; i < puntos.size(); i++) {
                 if (puntos.get(i).getNombre().equals(a)) {
                     puntos.get(i).setUp(null);
@@ -549,6 +565,7 @@ public class MapaController extends Controller implements Initializable {
                 }
             }
         } else {
+            System.out.println("Cierra aqui en != null");
             for (int i = 0; i < puntos.size(); i++) {
                 if (puntos.get(i).getNombre().equals(a)) {
                     if (puntos.get(i).getUp() != null && puntos.get(i).getUp().equals(cerrar)) {
@@ -575,7 +592,7 @@ public class MapaController extends Controller implements Initializable {
 
 
         }
-        lento(a, false);
+       // lento(a, false);
         icon.setLayoutX(a.getLayoutX());
         icon.setLayoutY(a.getLayoutY() + 5);
         icon.setOnMouseClicked((e) -> {
@@ -594,9 +611,8 @@ public class MapaController extends Controller implements Initializable {
     private void onClickInPuntoMapa(ActionEvent event){
         JFXButton buttonSelected = (JFXButton) event.getSource();
 
-        buttonSelected.getStyleClass().add("buttonSelected");
-
         if(!tgAccidente.isSelected() && !tgCosevi.isSelected() && isCreandoRuta){
+            buttonSelected.getStyleClass().add("buttonSelected");
             if(start== null || end!=null){
                 System.out.println("Se asina el prime elemento");
                 if(start!=null){
@@ -629,55 +645,6 @@ public class MapaController extends Controller implements Initializable {
     }
 
 
-
-    public void click() {
-       this.iv_inicioViaje.setOnMouseClicked((e) -> {
-            this.inicio = true;
-            this.fin = false;
-            ocultaBotones(false);
-            tiempo = 0;
-        });
-        this.iv_finalViaje.setOnMouseClicked((e) -> {
-            this.root.getChildren().removeAll(lines);
-            this.root.getChildren().removeAll(linesVer);
-            this.fin = true;
-            this.inicio = false;
-            ocultaBotones(false);
-            tiempo = 0;
-        });
-        for (int i = 0; i < puntos.size(); i++) {
-            puntos.get(i).getNombre().setOnMouseClicked((e) -> {
-                if (this.tgAccidente.isSelected()) {
-                    bloqueo((JFXButton) e.getSource());
-                    this.tgAccidente.setSelected(false);
-                } else if (this.tgCosevi.isSelected()) {
-                    bloqueo((JFXButton) e.getSource());
-                    this.tgCosevi.setSelected(false);
-                } else if (inicio) {
-                    if(time != null) time.cancel();
-                    this.root.getChildren().removeAll(lines);
-                    lines.clear();
-                    this.root.getChildren().removeAll(linesVer);
-                    linesVer.clear();
-                    iniFin((JFXButton) e.getSource());
-                    this.start = (JFXButton) e.getSource();
-                    this.root.getChildren().remove(this.carrito);
-                } else if (fin) {
-                    if(time != null) time.cancel();
-                    this.root.getChildren().removeAll(lines);
-                    lines.clear();
-                    this.root.getChildren().removeAll(linesVer);
-                    linesVer.clear();
-                    iniFin((JFXButton) e.getSource());
-                    this.end = (JFXButton) e.getSource();
-                    this.root.getChildren().remove(this.carrito);
-                }
-                ocultaBotones(true);
-            });
-        }
-    }
-
-
     @FXML
     private void accidente(ActionEvent event) {
         ocultaBotones(!this.tgAccidente.isSelected());
@@ -698,7 +665,7 @@ public class MapaController extends Controller implements Initializable {
         if (traficoLento.isSelected()) {
             modo = 140;
         } else if (traficoModerado.isSelected()) {
-            modo = 10;
+            modo = 50;
         }
     }
 
@@ -709,26 +676,11 @@ public class MapaController extends Controller implements Initializable {
     @FXML
     private void comenzar(ActionEvent event) {
         if (start != null && end != null) {
-            //this.root.getChildren().removeAll(lines);
-            //lines.clear();
+
             path.getElements().clear();
-            Integer distancia = 0;
-            //Dijkstra
-            if (this.dijkstra.isSelected()) {
-                dijks.dijkstra(this.start, this.end);
-                ocultaBotones(tgAccidente.isSelected() || tgCosevi.isSelected());
-                threadViaje = new Thread(this::hacerViaje);
-                threadViaje.start();
-
-            } //Floyd
-            else if (this.floyd.isSelected()) {
-                floy.floyd(this.start, this.end);
-                for (int i = 0; i < floy.getRuta().size(); i++) {
-                    lineas(lines, floy.getRuta().get(i).getEgreso(), floy.getRuta().get(i).getIngreso(), Color.RED, 3);
-                    distancia += floy.getRuta().get(i).getPeso();
-                }
-
-            }
+            ocultaBotones(!(tgAccidente.isSelected() || tgCosevi.isSelected()));
+            threadViaje = new Thread(this::hacerViaje);
+            threadViaje.start();
 
             this.root.getChildren().remove(this.ptInicio);
             this.root.getChildren().add(this.ptInicio);
@@ -778,20 +730,6 @@ public class MapaController extends Controller implements Initializable {
         }
     }
 
-   public void iniFin(JFXButton a) {
-        if (this.inicio) {
-            this.root.getChildren().remove(this.ptInicio);
-            this.inicio = false;
-            this.root.getChildren().add(this.ptInicio);
-        }
-        if (this.fin) {
-            this.root.getChildren().remove(this.ptFinal);
-            this.ptFinal.setX(a.getLayoutX());
-            this.ptFinal.setY(a.getLayoutY() + 5);
-            this.fin = false;
-            this.root.getChildren().add(this.ptFinal);
-        }
-    }
 
     @FXML
     private void eliminaBloqueos(ActionEvent event) {
@@ -825,49 +763,81 @@ public class MapaController extends Controller implements Initializable {
             pintarCarrito(start);
            recalcularRuta(start);
 
+
         });
     }
 
     public void recalcularRuta(JFXButton s){
         if(s != end){
+            List<Ruta> ruta;
+            if(dijkstra.isSelected()){
+                dijks.dijkstra(s, end);
+                ruta = dijks.getRuta();
+            }else {
+                floy.floyd(s,end);
+                ruta = floy.getRuta();
+
+            }
 
 
-            dijks.dijkstra(s, end);
-            List<Ruta> ruta = dijks.getRuta();
-            Ruta rutaEnCurso = ruta.get(0);
-            JFXButton auxStar = rutaEnCurso.getEgreso();
-            JFXButton auxEnd = rutaEnCurso.getIngreso();
+            if(!ruta.isEmpty()){
+                Ruta rutaEnCurso = ruta.get(0);
+                JFXButton auxStar = rutaEnCurso.getEgreso();
+                JFXButton auxEnd = rutaEnCurso.getIngreso();
+
+                System.out.println(rutaEnCurso.getEgreso().getLayoutX());
+                System.out.println(rutaEnCurso.getIngreso().getLayoutX());
 
 
-            distancia += rutaEnCurso.getPeso();
+                distancia += rutaEnCurso.getPeso();
+                System.out.println(distancia);
 
-            aristaTotal.setText(String.valueOf(distancia));
-            int tiempoCurso = rutaEnCurso.getPeso()*modo;
-            tiempo+=tiempoCurso/3000;
-            tiempoTotal.setText(String.valueOf(tiempo));
+                aristaTotal.setText(String.valueOf(distancia));
+                int tiempoCurso = rutaEnCurso.getPeso()*modo;
+                tiempo+=tiempoCurso/3000;
+                tiempoTotal.setText(String.valueOf(tiempo));
 
-            root.getChildren().removeAll(lines);
-            pintarRuta(ruta,linesVer, Color.BROWN);
-            root.getChildren().addAll(lines);
+                root.getChildren().removeAll(lines);
+                pintarRuta(ruta,linesVer, Color.BROWN);
+                root.getChildren().addAll(lines);
 
-             pintarCarrito(auxStar);
+                pintarCarrito(auxStar);
+                marcarPath(auxStar, auxEnd);
+                PathTransition pathTransition = new PathTransition();
+                pathTransition.setDuration(Duration.millis(tiempoCurso));
+                pathTransition.setNode(carrito);
+                pathTransition.setPath(path);
+                pathTransition.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+                pathTransition.play();
+                pathTransition.setOnFinished(e -> recalcularRuta(auxEnd));
+                System.out.println("sale");
+            }else {
+                float costo = (distancia<50) ? 650 : (distancia*5+tiempo*5);;
+                costoTotal.setText(String.valueOf(costo));
+                new Mensaje().show(AlertType.INFORMATION, "Lo sentimos :c", "No existe una ruta disponible para completar el viaje, el costo es de " + costo);
+               nuevarutaButton.setVisible(true);
+                retroalimentacionDelViaje(true);
+            }
 
-
-            marcarPath(auxStar, auxEnd);
-            PathTransition pathTransition = new PathTransition();
-            pathTransition.setDuration(Duration.millis(tiempoCurso));
-            pathTransition.setNode(carrito);
-            pathTransition.setPath(path);
-            pathTransition.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
-            pathTransition.play();
-            pathTransition.setOnFinished(e -> recalcularRuta(auxEnd));
         }else {
-            float costo = (distancia<50) ? 650 : distancia*5;
+            float costo = (distancia<50) ? 650 : (distancia*5+tiempo*10);
             costoTotal.setText(String.valueOf(costo));
             new Mensaje().show(AlertType.INFORMATION, "Viaje Completado", "El viaje se ha completado, el costo es de " + costo + " colones");
-            inicializarMapa();
+           nuevarutaButton.setVisible(true);
+            retroalimentacionDelViaje(true);
         }
+    }
 
+    public void retroalimentacionDelViaje(boolean estado){
+        nuevarutaButton.setVisible(true);
+        tgAccidente.setDisable(estado);
+        tgCosevi.setDisable(estado);
+        traficoModerado.setDisable(estado);
+        traficoLento.setDisable(estado);
+        traficoNormal.setDisable(estado);
+        comenzar.setVisible(!estado);
+        quitarBloqueosButton.setVisible(!estado);
+        limpiarBloqueosButton.setVisible(!estado);
 
     }
     public void lento(JFXButton epicentro, Boolean activado) {
@@ -1003,6 +973,8 @@ public class MapaController extends Controller implements Initializable {
         isCreandoRuta = true;
         nuevarutaButton.setVisible(false);
         paneOpciones.setDisable(true);
+
+        inicializarMapa();
         ocultaBotones(false);
     }
 }

@@ -128,11 +128,14 @@ public class Floyd {
     public Integer buscaBoton(JFXButton a) {
         Integer pos = -1;
         for (int i = 0; i < cantNodos; i++) {
+
             if (mapa.get(i).getNombre().equals(a)) {
                 pos = i;
                 i = cantNodos;
+
             }
         }
+        System.out.println(pos);
         return pos;
     }
 
@@ -141,7 +144,7 @@ public class Floyd {
         Integer termina = 0;
         while (termina < 500) {
             if (!direcciones[buscaBoton(start)][buscaBoton(end)].equals(end)) {
-                ruta.add(new Ruta(end, direcciones[buscaBoton(start)][buscaBoton(end)], pesos[buscaBoton(start)][buscaBoton(end)], 0, true));
+                ruta.add(new Ruta(end, direcciones[buscaBoton(start)][buscaBoton(end)], (pesos[buscaBoton(start)][buscaBoton(end)])*100, 0, true));
                 end = direcciones[buscaBoton(start)][buscaBoton(end)];
             }
             if (end.equals(start)) {
@@ -149,16 +152,7 @@ public class Floyd {
             }
             termina++;
         }
-        ruta.add(new Ruta(end, start, 0, 0, true));
-        
-        if(ruta.size() == 1){
-            ruta.clear();
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("No existe ruta para llegar a su destino.\nVerifique e intente nuevamente.");
-            alert.showAndWait();
-        }
+        ruta.add(new Ruta(end, start, 12, 0, true));
 
         Collections.reverse(ruta);
         Integer saltos = 1;

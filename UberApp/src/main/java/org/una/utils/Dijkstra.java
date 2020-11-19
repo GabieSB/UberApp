@@ -147,11 +147,6 @@ public class Dijkstra {
         }
         if (!end.equals(start)) {
             ruta.clear();
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText(null);
-            alert.setContentText("No existe ruta para llegar a su destino.\nVerifique e intente nuevamente.");
-            alert.showAndWait();
         }
         /**
          * Aqui se le da vuelta al array de ruta ya que se encuentra del punto
