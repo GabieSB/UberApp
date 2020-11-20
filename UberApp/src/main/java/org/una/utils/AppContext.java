@@ -75,6 +75,8 @@ public class AppContext {
         return object;
     }
 
+
+
     public void set(String nombre, Object valor) {
         context.put(nombre, valor);
     }

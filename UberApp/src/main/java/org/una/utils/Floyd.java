@@ -21,6 +21,9 @@ public class Floyd {
     private final Integer INF;
     private ArrayList<Puntos> mapa;
     private ArrayList<Ruta> ruta;
+    private JFXButton start ;
+    private JFXButton end ;
+
 
     //Constructor
     public Floyd(ArrayList<Puntos> puntos) {
@@ -81,6 +84,7 @@ public class Floyd {
      * @param end
      */
     public void floyd(JFXButton start, JFXButton end) {
+
         llenaMatrices();
         //imprime();
         //Controla el pivot
@@ -173,6 +177,8 @@ public class Floyd {
             System.out.println(ruta.get(i).toString());
         }*/
     }
+
+
 
     public ArrayList<Ruta> getRuta() {
         return ruta;

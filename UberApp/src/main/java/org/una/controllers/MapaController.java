@@ -266,6 +266,7 @@ public class MapaController extends Controller implements Initializable {
     private ToggleGroup tipoAlgoritmo;
     @FXML
     private JFXRadioButton floyd;
+    private JFXRadioButton floydSelected;
     @FXML
     private Label aristaTotal;
     @FXML
@@ -282,6 +283,7 @@ public class MapaController extends Controller implements Initializable {
     private ToggleGroup bloqueo;
     @FXML
     private JFXButton btnVer;
+    boolean c = true;
 
     private ArrayList<Puntos> puntos;
     private ArrayList<Line> lines;
@@ -304,6 +306,7 @@ public class MapaController extends Controller implements Initializable {
     private Path path = new Path();
     private int modo;
     private boolean isCreandoRuta = false;
+    private boolean isfloydSelected ;
 
     Thread threadViaje = new Thread();
 
@@ -358,6 +361,7 @@ public class MapaController extends Controller implements Initializable {
         creaPuntos();
         this.dijks = new Dijkstra(this.puntos);
         this.floy = new Floyd(this.puntos);
+        isfloydSelected = false;
         //click();
         ocultaBotones(false);
         this.start = null;
@@ -411,16 +415,10 @@ public class MapaController extends Controller implements Initializable {
         root.getChildren().removeAll(lines);
         lines.clear();
         path.getElements().clear();
-        if(dijkstra.isSelected()){
-            dijks.dijkstra(start,end);
-            pintarRuta(dijks.getRuta(), lines, Color.BLUE);
-        }
-        if(floyd.isSelected()){
 
-            floy.floyd(start, end);
-            pintarRuta(floy.getRuta(), lines, Color.BLUE );
-        }
+        List<Ruta> rutas = getRutasSegunAlgoritmoSeleccionado(start);
 
+        pintarRuta(rutas, lines, Color.BLUE);
         //root.getChildren().addAll(lines);
     }
 
@@ -800,13 +798,17 @@ public class MapaController extends Controller implements Initializable {
     }
 
     private List<Ruta> getRutasSegunAlgoritmoSeleccionado(JFXButton s) {
-        List<Ruta> ruta;
-        if(dijkstra.isSelected()){
+        List<Ruta> ruta = new ArrayList<>();
+
+
+        if (isfloydSelected){
+            floy.floyd(s,end);
+            if(!floy.getRuta().isEmpty()) ruta = floy.getRuta();
+        }else {
+
             dijks.dijkstra(s, end);
             ruta = dijks.getRuta();
-        }else {
-            floy.floyd(s,end);
-            ruta = floy.getRuta();
+
         }
         return ruta;
     }
