@@ -325,7 +325,7 @@ public class MapaController extends Controller implements Initializable {
     private void inicializarMapa(){
         distancia = 0;
         tiempo = 0;
-        modo = 100;
+        modo = 50;
         root.getChildren().removeAll(lines);
         root.getChildren().removeAll(linesVer);
         lines.clear();
@@ -903,6 +903,7 @@ public class MapaController extends Controller implements Initializable {
 
     public void atrasButtonOnAction(ActionEvent actionEvent) {
         FlowController.getInstance().goMain();
+        FlowController.getInstance().eliminarDeCache("Mapa");
         FlowController.getInstance().getStage().centerOnScreen();
     }
 
