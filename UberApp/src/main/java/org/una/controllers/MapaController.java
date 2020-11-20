@@ -739,6 +739,7 @@ public class MapaController extends Controller implements Initializable {
 
             if(!ruta.isEmpty()){
                 Ruta rutaEnCurso = ruta.get(0);
+                if(rutaEnCurso.getPeso()<=0) rutaEnCurso.setPeso(12);
                 JFXButton auxStar = rutaEnCurso.getEgreso();
                 JFXButton auxEnd = rutaEnCurso.getIngreso();
 
@@ -785,7 +786,7 @@ public class MapaController extends Controller implements Initializable {
     }
 
     private void mensajeViajeNoCompletado() {
-        float costo = (distancia<50) ? 650 : (distancia*5+tiempo*5);
+        float costo = (distancia<125) ? 650 : (distancia*5+tiempo*5);
         costoTotal.setText(String.valueOf(costo));
         new Mensaje().show(AlertType.INFORMATION, "Lo sentimos :c", "No existe una ruta disponible para completar el viaje, el costo es de " + costo);
         nuevarutaButton.setVisible(true);
