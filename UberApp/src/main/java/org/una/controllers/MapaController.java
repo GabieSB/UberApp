@@ -405,10 +405,9 @@ public class MapaController extends Controller implements Initializable {
 
     private  void pintarRutaEnMapa(){
 
-
+        //root.getChildren().removeAll(lines);
         linesVer.clear();
 
-        root.getChildren().removeAll(lines);
         lines.clear();
         path.getElements().clear();
         if(dijkstra.isSelected()){
@@ -420,18 +419,17 @@ public class MapaController extends Controller implements Initializable {
             floy.floyd(start, end);
             pintarRuta(floy.getRuta(), lines, Color.BLUE );
         }
-
         //root.getChildren().addAll(lines);
     }
 
     private  void pintarRuta(List<Ruta> rutas, ArrayList<Line> lineas, Color color){
 
-        root.getChildren().removeAll(lineas);
+        //root.getChildren().removeAll(lineas);
         for (Ruta r:rutas) {
             lineas(lineas, r.getIngreso(), r.getEgreso(), color, 2);
         }
-        root.getChildren().addAll(lineas);
-
+        //root.getChildren().addAll(lineas);
+        //root.getChildren().removeAll(lineas);
     }
 
     public void lineas(ArrayList<Line> lineas, JFXButton start, JFXButton end, Color color, Integer tam) {
