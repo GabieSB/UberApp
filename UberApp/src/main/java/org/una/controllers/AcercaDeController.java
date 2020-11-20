@@ -26,6 +26,6 @@ public class AcercaDeController extends Controller implements Initializable {
     }
 
     public void atrasButtonOnAction(ActionEvent actionEvent) {
-        FlowController.getInstance().goBack();
+        FlowController.getInstance().goMain();
     }
 }

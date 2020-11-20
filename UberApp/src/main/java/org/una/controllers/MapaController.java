@@ -900,6 +900,7 @@ public class MapaController extends Controller implements Initializable {
 
     public void atrasButtonOnAction(ActionEvent actionEvent) {
         FlowController.getInstance().goMain();
+        FlowController.getInstance().eliminarDeCache("Mapa");
         FlowController.getInstance().getStage().centerOnScreen();
     }
 

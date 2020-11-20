@@ -19,8 +19,9 @@ public class InstruccionesController extends Controller implements Initializable
 
     }
 
-    public void atrasButtonOnAction(ActionEvent actionEvent) {
-        FlowController.getInstance().goBack();
+    public void atrasButtonOnAction(ActionEvent actionEvent)
+    {
+        FlowController.getInstance().goMain();
     }
 
     @Override
