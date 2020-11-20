@@ -336,6 +336,7 @@ public class MapaController extends Controller implements Initializable {
         root.getChildren().remove(path);
         tgCosevi.setSelected(false);
         tgAccidente.setSelected(false);
+        algotitmoPane.setDisable(false);
         eliminarBloqueosDelMapa();
         nuevarutaButton.setVisible(true);
         tiempoTotal.setText("");
@@ -667,9 +668,9 @@ public class MapaController extends Controller implements Initializable {
     private void modoTrafico(ActionEvent event) {
      //   creaPuntos();
         if (traficoLento.isSelected()) {
-            modo = 140;
+            modo = 150;
         } else if (traficoModerado.isSelected()) {
-            modo = 50;
+            modo = 40;
         }
     }
 
@@ -682,6 +683,7 @@ public class MapaController extends Controller implements Initializable {
         if (start != null && end != null) {
 
             path.getElements().clear();
+            algotitmoPane.setDisable(true);
             ocultaBotones(!(tgAccidente.isSelected() || tgCosevi.isSelected()));
             threadViaje = new Thread(this::hacerViaje);
             threadViaje.start();

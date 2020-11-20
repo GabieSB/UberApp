@@ -15,7 +15,7 @@
                   <Font name="Arial Bold" size="24.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" styleClass="acercade" text="Sede, Región Brunka" textAlignment="CENTER" textFill="WHITE">
+            <Label alignment="CENTER" contentDisplay="CENTER" styleClass="acercade" text="Sede, Región Brunca" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="Arial" size="24.0" />
                </font>
@@ -30,11 +30,6 @@
                   <Font name="Arial" size="24.0" />
                </font>
             </Label>
-            <Label styleClass="acercade" text="José Daniel Pérez Vega" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="24.0" />
-               </font>
-            </Label>
             <Label styleClass="acercade" text="Monica Serracín Berrocal" textFill="WHITE">
                <font>
                   <Font name="Arial" size="24.0" />
@@ -45,7 +40,12 @@
                   <Font name="Arial" size="24.0" />
                </font>
             </Label>
-            <Label styleClass="acercade" text="Kender Porras Alvarado" textFill="WHITE">
+            <Label styleClass="acercade" text="José Daniel Pérez Vega" textFill="#463b37">
+               <font>
+                  <Font name="Arial" size="24.0" />
+               </font>
+            </Label>
+            <Label styleClass="acercade" text="Kender Porras Alvarado " textFill="#514646">
                <font>
                   <Font name="Arial" size="24.0" />
                </font>
