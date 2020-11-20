@@ -325,7 +325,7 @@ public class MapaController extends Controller implements Initializable {
     private void inicializarMapa(){
         distancia = 0;
         tiempo = 0;
-        modo = 100;
+        modo = 50;
         root.getChildren().removeAll(lines);
         root.getChildren().removeAll(linesVer);
         lines.clear();
@@ -667,9 +667,9 @@ public class MapaController extends Controller implements Initializable {
     private void modoTrafico(ActionEvent event) {
      //   creaPuntos();
         if (traficoLento.isSelected()) {
-            modo = 140;
+            modo = 150;
         } else if (traficoModerado.isSelected()) {
-            modo = 50;
+            modo = 100;
         }
     }
 
